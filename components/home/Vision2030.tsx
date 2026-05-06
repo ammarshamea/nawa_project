@@ -36,8 +36,8 @@ export default function Vision2030() {
         />
       </div>
 
-      <div className="container-luxury relative z-10 w-full min-w-0">
-        <div className="max-w-3xl w-full min-w-0">
+      <div className="container-luxury relative z-10 grid w-full min-w-0 grid-cols-1 gap-8 lg:grid-cols-12">
+        <div className="max-w-3xl w-full min-w-0 lg:col-span-8 lg:col-start-3 lg:mx-0 mx-auto">
           <ScrollReveal>
             <div className="flex items-center gap-3 mb-6">
               <GoldDivider />

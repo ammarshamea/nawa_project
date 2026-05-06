@@ -66,12 +66,12 @@ export default function HomeCTA() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.25}>
-          <div className="flex w-full max-w-md mx-auto flex-col items-stretch gap-3 min-[480px]:max-w-none min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:justify-center sm:gap-4">
-            <Link href="/contact" className="btn-gold text-base w-full min-[480px]:w-auto justify-center">
+          <div className="mx-auto mt-8 grid w-full max-w-lg grid-cols-1 gap-3 min-[440px]:max-w-xl min-[440px]:grid-cols-2 justify-items-stretch justify-center">
+            <Link href="/contact" className="btn-gold text-base justify-center">
               {tx(t.footer.schedule, lang)}
               <ArrowRight size={16} />
             </Link>
-            <Link href="/about" className="btn-outline-gold w-full min-[480px]:w-auto justify-center">
+            <Link href="/about" className="btn-outline-gold justify-center">
               {tx(t.nav.about, lang)}
             </Link>
           </div>

@@ -108,6 +108,29 @@
   box-shadow: 0 0 28px rgba(255, 255, 255, 0.12);
 }
 
+/* Hero logo: fixed on mobile, grows on laptop/desktop */
+.hero-scene .hero-logo-visual {
+  display: block;
+  margin-inline: auto;
+  width: auto;
+  /* Mobile: fixed comfortable height */
+  height: 200px;
+  max-width: 100%;
+  object-fit: contain;
+}
+/* Laptop (900-1279px) */
+@media (min-width: 900px) {
+  .hero-scene .hero-logo-visual {
+    height: clamp(320px, 48svh, 520px);
+  }
+}
+/* Desktop / wide (1280px+) */
+@media (min-width: 1280px) {
+  .hero-scene .hero-logo-visual {
+    height: clamp(420px, 56svh, 680px);
+  }
+}
+
 .surface-dark .btn-outline-gold {
   color: #f0d889;
   border-color: rgba(235, 191, 91, 0.85);
@@ -234,6 +257,41 @@ html[dir="rtl"] .arabic-skip-rtl {
 
 /* RTL flips for section padding direction */
 html[dir="rtl"] .container-luxury { direction: rtl; }
+
+/*
+ * Site shell: `<main>` stacks full-width sections as explicit grid rows
+ * (`min-content`) so layouts stay predictable with overflow clipping.
+ */
+main.site-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: min-content;
+}
+
+/*
+ * Responsive “data” matrix — facts, bullets, contact tiles, list cards.
+ * Fills rows with equal min width then wraps (no orphaned flex quirks).
+ */
+.luxury-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: clamp(0.65rem, 2vw, 1rem);
+}
+.luxury-data-grid--tight {
+  gap: clamp(0.5rem, 1.5vw, 0.8rem);
+}
+
+/* Larger cells for project cards */
+.luxury-data-grid--wide {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+}
+
+/* Dense fact rows (spec strips, KPIs) */
+.luxury-data-grid--facts {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr));
+  gap: 1rem 1.75rem;
+}
 
 /* ════════════════════════════════════════════
    EYEBROW / LABEL

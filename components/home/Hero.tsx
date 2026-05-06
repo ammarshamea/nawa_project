@@ -233,16 +233,7 @@ export default function Hero() {
                 className="flex w-full items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ebbf5b]"
                 style={{ lineHeight: 0 }}
               >
-                <NawaLogo
-                  style={{
-                    display: "block",
-                    margin: "0 auto",
-                    width: "auto",
-                    height: "clamp(108px, min(34svh, 52vw), min(460px, 46vh))",
-                    maxWidth: "100%",
-                    objectFit: "contain",
-                  }}
-                />
+                <NawaLogo className="hero-logo-visual" />
               </Link>
             </FadeUp>
           </div>

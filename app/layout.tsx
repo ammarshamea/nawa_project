@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col">
         <SiteProvider>
           <Navbar />
-          <main className="flex-1 min-w-0 w-full overflow-x-clip">{children}</main>
+          <main className="site-shell flex-1 min-w-0 w-full overflow-x-clip">{children}</main>
           <Footer />
         </SiteProvider>
       </body>

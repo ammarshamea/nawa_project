@@ -262,7 +262,7 @@ export default function ProjectsPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35 }}
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+              className="luxury-data-grid luxury-data-grid--wide"
             >
               {filtered.map((project, i) => (
                 <motion.div
@@ -320,12 +320,12 @@ export default function ProjectsPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.18}>
-            <div className="mt-8 flex w-full max-w-md mx-auto flex-col gap-3 min-[520px]:max-w-none min-[520px]:flex-row min-[520px]:flex-wrap min-[520px]:justify-center sm:gap-4">
-              <Link href="/contact" className="btn-gold w-full min-[520px]:w-auto shrink-0 justify-center">
+            <div className="mx-auto mt-8 grid max-w-xl w-full grid-cols-1 gap-3 min-[480px]:max-w-none min-[480px]:grid-cols-2 md:justify-center">
+              <Link href="/contact" className="btn-gold w-full min-[480px]:w-auto shrink-0 justify-center">
                 Request Investment Brief
                 <ArrowRight size={15} />
               </Link>
-              <a href="tel:+966500000001" className="btn-outline-gold w-full min-[520px]:w-auto shrink-0 justify-center">
+              <a href="tel:+966500000001" className="btn-outline-gold w-full min-[480px]:w-auto shrink-0 justify-center">
                 Call Investor Hotline
               </a>
             </div>
@@ -429,31 +429,26 @@ function ProjectCard({
           {project.desc}
         </p>
 
-        <div className="gold-line mb-4" />
-
-        <div className="flex items-center justify-between">
-          <div className="flex gap-4">
-            <div>
-              <p className="eyebrow" style={{ color: "#b58516", fontSize: "0.55rem" }}>
-                Area
-              </p>
-              <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.6)" }}>
-                {project.area}
-              </p>
-            </div>
-            <div>
-              <p className="eyebrow" style={{ color: "#b58516", fontSize: "0.55rem" }}>
-                Scale
-              </p>
-              <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.6)" }}>
-                {project.units}
-              </p>
-            </div>
+        <div className="luxury-data-grid luxury-data-grid--facts border-t pt-4" style={{ borderColor: "rgba(181,133,22,0.22)" }}>
+          <div>
+            <p className="eyebrow" style={{ color: "#b58516", fontSize: "0.55rem" }}>
+              Area
+            </p>
+            <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+              {project.area}
+            </p>
           </div>
-
-          <div className="flex items-center gap-1.5">
-            <MapPin size={10} style={{ color: "#b58516" }} />
-            <span className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+          <div>
+            <p className="eyebrow" style={{ color: "#b58516", fontSize: "0.55rem" }}>
+              Scale
+            </p>
+            <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+              {project.units}
+            </p>
+          </div>
+          <div className="col-span-full flex items-center gap-1.5">
+            <MapPin size={10} style={{ color: "#b58516", flexShrink: 0 }} />
+            <span className="text-xs leading-snug" style={{ color: "rgba(255,255,255,0.4)" }}>
               {project.location}
             </span>
           </div>

@@ -135,7 +135,7 @@ export default function AboutPage() {
             ) : null}
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="luxury-data-grid xl:gap-6">
             {t.about.values.map((value, i) => {
               const Icon = valueIcons[i] ?? Gem;
 
@@ -168,7 +168,7 @@ export default function AboutPage() {
             <h3 style={{ fontSize: "clamp(1.6rem, 3vw, 2.5rem)", color: "var(--c-text-1)", fontWeight: 700 }}>
               {tx(t.about.philosophyTitle, lang)}
             </h3>
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 luxury-data-grid luxury-data-grid--tight">
               {t.about.philosophy.map((item) => (
                 <div key={item.en} className="p-4" style={{ border: "1px solid var(--c-border)", background: "var(--c-card)" }}>
                   {tx(item, lang)}
@@ -186,7 +186,7 @@ export default function AboutPage() {
                 {tx(t.about.sustainabilityTitle, lang)}
               </h3>
             ) : null}
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 luxury-data-grid luxury-data-grid--tight">
               {t.about.sustainability.map((item) => (
                 <div key={item.en} className="p-4" style={{ border: "1px solid var(--c-border)", background: "var(--c-card)" }}>
                   {tx(item, lang)}
@@ -208,7 +208,7 @@ export default function AboutPage() {
                 {tx(t.about.partnershipsTitle, lang)}
               </h3>
             ) : null}
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 luxury-data-grid luxury-data-grid--tight">
               {t.about.partnerships.map((item) => (
                 <div key={item.en} className="p-4" style={{ border: "1px solid var(--c-border)", background: "var(--c-card)" }}>
                   {tx(item, lang)}
@@ -228,7 +228,7 @@ export default function AboutPage() {
             <ScrollReveal>
               <SectionLabel label={tx(t.about.advantageLabel, lang)} />
             </ScrollReveal>
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 luxury-data-grid luxury-data-grid--tight">
               {t.about.advantage.map((item) => (
                 <div key={item.en} className="p-4" style={{ border: "1px solid var(--c-border)", background: "var(--c-card)" }}>
                   {tx(item, lang)}
@@ -267,12 +267,12 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <Link href="/contact" className="btn-gold">
+            <div className="mx-auto mt-8 grid max-w-lg grid-cols-1 gap-3 min-[420px]:max-w-xl min-[420px]:grid-cols-2 justify-items-center">
+              <Link href="/contact" className="btn-gold w-full min-[420px]:w-auto justify-center">
                 {tx(t.about.ctaBtn1, lang)}
                 <ArrowRight size={15} />
               </Link>
-              <Link href="/about" className="btn-outline-gold">
+              <Link href="/about" className="btn-outline-gold w-full min-[420px]:w-auto justify-center">
                 {tx(t.about.label, lang)}
               </Link>
             </div>

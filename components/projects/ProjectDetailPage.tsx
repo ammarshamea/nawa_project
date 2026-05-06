@@ -98,7 +98,10 @@ export default function ProjectDetailPage({ project, related }: { project: Proje
             </p>
 
             {/* Quick specs */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem", marginTop: "2rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(181,133,22,0.2)" }}>
+            <div
+              className="luxury-data-grid luxury-data-grid--facts mt-8 pt-6"
+              style={{ borderTop: "1px solid rgba(181,133,22,0.2)" }}
+            >
               {[
                 { Icon: MapPin,   label: tx(t.common.location, lang), value: location  },
                 { Icon: Layers,   label: tx(t.common.area,     lang), value: project.area   },

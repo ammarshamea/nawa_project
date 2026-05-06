@@ -81,20 +81,24 @@ export default function InvestmentValue() {
               </ScrollReveal>
             ) : null}
 
-            <div className={`space-y-5 ${tx(t.investmentValue.title, lang).trim() || tx(t.investmentValue.sub, lang).trim() ? "" : "mt-6"}`}>
+            <div
+              className={`luxury-data-grid ${
+                tx(t.investmentValue.title, lang).trim() || tx(t.investmentValue.sub, lang).trim() ? "mt-8" : "mt-6"
+              }`}
+            >
               {t.investmentValue.items.map((item, i) => {
                 const Icon = icons[i] ?? Gem;
 
                 return (
                   <ScrollReveal key={item.en} delay={0.2 + i * 0.07}>
-                    <div className="flex gap-5 group">
+                    <div className="flex gap-5 group h-full min-h-[3.75rem] p-4 rounded-lg" style={{ border: "1px solid var(--c-border-lo)", background: "var(--c-card)" }}>
                       <div
                         className="w-10 h-10 flex-shrink-0 flex items-center justify-center mt-0.5"
                         style={{ border: "1px solid var(--c-border-hi)" }}
                       >
                         <Icon size={16} style={{ color: "var(--c-gold)" }} />
                       </div>
-                      <h4 className="font-semibold text-sm" style={{ letterSpacing: "0.04em", color: "var(--c-text-1)" }}>
+                      <h4 className="font-semibold text-sm leading-snug self-center" style={{ letterSpacing: "0.04em", color: "var(--c-text-1)" }}>
                         {tx(item, lang)}
                       </h4>
                     </div>

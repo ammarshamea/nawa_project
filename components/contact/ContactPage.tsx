@@ -66,12 +66,13 @@ export default function ContactPage() {
 
       <section className="section-padding" style={{ background: "var(--c-bg-1)" }}>
         <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 xl:gap-12">
-            <div className="lg:col-span-1 space-y-6">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10 xl:gap-12">
+            <div className="lg:col-span-1">
               <ScrollReveal>
                 <SectionLabel label={tx(t.contact.detailsLabel, lang)} />
               </ScrollReveal>
 
+              <div className="mt-8 luxury-data-grid luxury-data-grid--tight">
               {[
                 { Icon: MapPin, label: t.contact.officeLabel, value: t.contact.officeVal },
                 { Icon: Phone, label: t.contact.generalLabel, value: { en: "+966 11 000 0000", ar: "+966 11 000 0000" }, href: "tel:+96611000000" },
@@ -81,7 +82,7 @@ export default function ContactPage() {
               ].map((item, i) => (
                 <ScrollReveal key={item.label.en} delay={i * 0.07}>
                   <div
-                    className="p-5 flex gap-4"
+                    className="p-5 flex gap-4 h-full"
                     style={{
                       border: `1px solid ${item.highlight ? "var(--c-border-hi)" : "var(--c-border)"}`,
                       background: item.highlight ? "var(--c-card-h)" : "var(--c-card)",
@@ -105,6 +106,7 @@ export default function ContactPage() {
                   </div>
                 </ScrollReveal>
               ))}
+              </div>
             </div>
 
             <div className="lg:col-span-2">
@@ -146,7 +148,7 @@ export default function ContactPage() {
                       <label className="eyebrow block mb-3" style={{ color: "var(--c-text-3)", fontSize: "0.62rem" }}>
                         {tx(t.contact.inquiryType, lang)}
                       </label>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                         {(lang === "ar" ? t.contact.inquiryTypes.ar : t.contact.inquiryTypes.en).map((type) => (
                           <button
                             key={type}

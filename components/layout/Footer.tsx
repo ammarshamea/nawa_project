@@ -26,7 +26,7 @@ export default function Footer() {
         }}
         className={isDark ? "surface-dark" : ""}
       >
-        <div className="container-luxury flex flex-col items-stretch gap-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-12 md:py-14">
+        <div className="container-luxury grid grid-cols-1 gap-4 py-10 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6 sm:py-12 md:py-14">
           <div>
             <p className="eyebrow" style={{ color: "var(--c-gold)" }}>
               {tx(t.footer.ctaLabel, lang)}
@@ -38,7 +38,7 @@ export default function Footer() {
               {tx(t.footer.ctaTitle, lang)}
             </h3>
           </div>
-          <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center md:w-auto md:justify-end">
+          <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-self-end md:w-auto md:justify-end">
             <Link href="/contact" className="btn-gold w-full justify-center sm:w-auto shrink-0">
               {tx(t.footer.schedule, lang)}
             </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
       </div>
 
       <div className="container-luxury py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 lg:gap-14">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 md:gap-12 lg:gap-14">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <NawaLogo height={80} />
@@ -115,11 +115,11 @@ export default function Footer() {
 
         <div className="gold-line my-12" />
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs" style={{ color: "var(--c-text-3)" }}>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:justify-items-center">
+          <p className="text-center text-xs md:justify-self-start md:text-start" style={{ color: "var(--c-text-3)" }}>
             © {new Date().getFullYear()} Nawah Real Estate Development. {tx(t.footer.rights, lang)}
           </p>
-          <p className="text-xs" style={{ color: "var(--c-gold-dim)" }}>
+          <p className="text-center text-xs md:justify-self-end md:text-end" style={{ color: "var(--c-gold-dim)" }}>
             {tx(t.brand.title, lang)}
           </p>
         </div>

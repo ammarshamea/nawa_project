@@ -15,7 +15,7 @@ export default function Services() {
   return (
     <section className="section-padding" style={{ background: "var(--c-bg-2)" }}>
       <div className="container-luxury space-y-14 lg:space-y-20">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-end">
           <div>
             <ScrollReveal>
               <SectionLabel label={tx(t.services.label, lang)} />
@@ -42,7 +42,7 @@ export default function Services() {
             </ScrollReveal>
           </div>
           {tx(t.services.sub, lang).trim() ? (
-            <ScrollReveal delay={0.15} direction="left">
+            <ScrollReveal delay={0.15} direction="left" className="lg:justify-self-end">
               <p className="max-w-sm text-sm leading-relaxed" style={{ color: "var(--c-text-2)" }}>
                 {tx(t.services.sub, lang)}
               </p>
@@ -88,7 +88,7 @@ export default function Services() {
           <ScrollReveal>
             <SectionLabel label={tx(t.projectTypes.label, lang)} />
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+          <div className="luxury-data-grid luxury-data-grid--tight mt-8">
             {t.projectTypes.items.map((item, i) => (
               <ScrollReveal key={item.en} delay={0.05 + i * 0.06}>
                 <div className="p-5" style={{ border: "1px solid var(--c-border)", background: "var(--c-card)" }}>

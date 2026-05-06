@@ -12,16 +12,53 @@ const josefinSans = Josefin_Sans({
   display: "swap",
 });
 
+function siteOrigin(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+  if (explicit) return explicit;
+  const host = process.env.VERCEL_URL?.trim();
+  if (host) return `https://${host}`;
+  return "http://localhost:3000";
+}
+
+const basePathTrim = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+/** Public URL segment for `/public` assets when using Next `basePath` */
+function publicAsset(path: string): string {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return basePathTrim ? `${basePathTrim}${p}` : p;
+}
+
+const logoOgPath = publicAsset("nawa_logo.svg");
+
 export const metadata: Metadata = {
-  title: "Nawah Real Estate Development | نواة التطوير العقاري",
+  metadataBase: new URL(siteOrigin()),
+  title: "نواة التطوير العقاري | Nawah Real Estate Development",
   description:
-    "Nawah Real Estate Development — Saudi Arabia's premier luxury real estate developer in Riyadh. Crafting Luxury… Building Lifestyles. نصنع الفخامة… ونبني أسلوب حياة",
+    "نواة التطوير العقاري | Nawah Real Estate Development — Crafting Luxury… Building Lifestyles | نصنع الفخامة… ونبني أسلوب حياة",
   keywords:
     "luxury real estate, Saudi Arabia, Riyadh, real estate development, luxury villas, premium apartments, Vision 2030, نواة التطوير العقاري",
+  icons: {
+    icon: [{ url: logoOgPath, type: "image/svg+xml", sizes: "any" }],
+    shortcut: logoOgPath,
+    apple: logoOgPath,
+  },
   openGraph: {
-    title: "Nawah Real Estate Development | نواة التطوير العقاري",
+    title: "نواة التطوير العقاري | Nawah Real Estate Development",
     description: "Crafting Luxury… Building Lifestyles | نصنع الفخامة… ونبني أسلوب حياة",
     type: "website",
+    images: [
+      {
+        url: logoOgPath,
+        alt: "نواة التطوير العقاري | Nawah Real Estate Development",
+      },
+    ],
+    locale: "en_US",
+    alternateLocale: "ar_SA",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "نواة التطوير العقاري | Nawah Real Estate Development",
+    description: "Crafting Luxury… Building Lifestyles | نصنع الفخامة… ونبني أسلوب حياة",
+    images: [logoOgPath],
   },
 };
 

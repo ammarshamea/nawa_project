@@ -74,6 +74,49 @@
   --c-scroll-track: #e8e0cc;
 }
 
+/*
+ * Text on surfaces that stay dark in both themes (hero, image overlays, gold CTA bars).
+ * Light theme must not swap these to dark ink — it caused unreadable dark-on-dark text.
+ */
+:root {
+  --c-on-dark-1: #ffffff;
+  --c-on-dark-2: rgba(255, 255, 255, 0.68);
+  --c-on-dark-3: rgba(255, 255, 255, 0.42);
+}
+
+/* Home hero only: typography stays bright even when [data-theme="light"] on <html> */
+.hero-scene {
+  --hero-ink: #ffffff;
+  --hero-ink-muted: rgba(255, 255, 255, 0.72);
+  --hero-ink-faint: rgba(255, 255, 255, 0.42);
+}
+
+/* Keeps headline ink white on the photo strip even in light site theme (fixes WebKit fill / inherits) */
+.hero-scene .hero-headline-plain {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.hero-scene .btn-outline-gold {
+  color: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(255, 255, 255, 0.52) !important;
+}
+.hero-scene .btn-outline-gold:hover {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.88) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 28px rgba(255, 255, 255, 0.12);
+}
+
+.surface-dark .btn-outline-gold {
+  color: #f0d889;
+  border-color: rgba(235, 191, 91, 0.85);
+}
+.surface-dark .btn-outline-gold:hover {
+  color: #f9edd1;
+  border-color: #ebbf5b;
+}
+
 /* ════════════════════════════════════════════
    BASE RESET
    ════════════════════════════════════════════ */
@@ -140,6 +183,10 @@ html[dir="rtl"] .arabic-skip-rtl {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* Reduce edge clipping from background-clip on large display type */
+  padding-inline: 0.04em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 .text-gold-animate {
   background: linear-gradient(90deg, #b58516, #ebbf5b, #f9edd1, #ebbf5b, #b58516);
@@ -148,6 +195,9 @@ html[dir="rtl"] .arabic-skip-rtl {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmerText 4s linear infinite;
+  padding-inline: 0.04em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 @keyframes shimmerText {
   0%   { background-position: 0%   center; }

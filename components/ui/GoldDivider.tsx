@@ -1,3 +1,7 @@
+"use client";
+
+import { useSite } from "@/lib/context";
+
 interface Props {
   className?: string;
   width?: string;
@@ -37,20 +41,15 @@ export function GoldDivider({ className = "", width = "60px" }: Props) {
 }
 
 export function SectionLabel({ label, labelAr }: { label: string; labelAr?: string }) {
+  const { isAr } = useSite();
+  const displayedLabel = isAr ? (labelAr ?? label) : label;
+
   return (
     <div className="flex flex-col gap-2 mb-6">
       <GoldDivider />
       <span className="eyebrow" style={{ color: "#b58516" }}>
-        {label}
+        {displayedLabel}
       </span>
-      {labelAr && (
-        <span
-          className="arabic"
-          style={{ color: "rgba(235,191,91,0.55)", fontSize: "0.8rem" }}
-        >
-          {labelAr}
-        </span>
-      )}
     </div>
   );
 }

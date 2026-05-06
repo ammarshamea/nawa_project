@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import Introduction from "@/components/home/Introduction";
 import Services from "@/components/home/Services";
-import FeaturedProjects from "@/components/home/FeaturedProjects";
 import InvestmentValue from "@/components/home/InvestmentValue";
-import Statistics from "@/components/home/Statistics";
 import Vision2030 from "@/components/home/Vision2030";
 import HomeCTA from "@/components/home/HomeCTA";
 
 export const metadata: Metadata = {
-  title: "Nawah Real Estate Development | نواة التطوير العقاري — Riyadh",
+  title: "نواة التطوير العقاري | Nawah Real Estate Development",
   description:
-    "Nawah Real Estate Development — Saudi Arabia's premier luxury real estate developer in Riyadh. Crafting Luxury… Building Lifestyles. Explore landmark residences, compounds, and commercial developments.",
+    "نواة التطوير العقاري | Nawah Real Estate Development — Crafting Luxury… Building Lifestyles | نصنع الفخامة… ونبني أسلوب حياة",
 };
 
 export default function HomePage() {
@@ -20,9 +18,9 @@ export default function HomePage() {
       <Hero />
       <Introduction />
       <Services />
-      <FeaturedProjects />
       <InvestmentValue />
-      <Statistics />
+      {/* AmmarLord comment it return soon */}
+      {/* <Statistics /> */}
       <Vision2030 />
       <HomeCTA />
     </>

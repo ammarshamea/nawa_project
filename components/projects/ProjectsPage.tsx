@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useSite } from "@/lib/context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { SectionLabel } from "@/components/ui/GoldDivider";
 import { MapPin, ArrowRight, SlidersHorizontal } from "lucide-react";
@@ -137,6 +138,7 @@ const tagColors: Record<string, string> = {
 
 export default function ProjectsPage() {
   const [active, setActive] = useState("All");
+  const { isDark } = useSite();
 
   const filtered =
     active === "All" ? projects : projects.filter((p) => p.category === active);
@@ -286,23 +288,24 @@ export default function ProjectsPage() {
 
       {/* Investment CTA */}
       <section
-        className="section-padding"
+        className={isDark ? "surface-dark section-padding" : "section-padding"}
         style={{
-          background:
-            "linear-gradient(135deg, #0f0e00, #1a1500, #0f0e00)",
-          borderTop: "1px solid rgba(181,133,22,0.2)",
+          background: isDark
+            ? "linear-gradient(135deg, #0f0e00, #1a1500, #0f0e00)"
+            : "linear-gradient(135deg, var(--c-bg-1), var(--c-bg-2), var(--c-bg-1))",
+          borderTop: "1px solid var(--c-border)",
         }}
       >
         <div className="container-luxury text-center">
           <ScrollReveal>
-            <p className="eyebrow mb-4" style={{ color: "#b58516" }}>
+            <p className="eyebrow mb-4" style={{ color: "var(--c-gold)" }}>
               Invest With Confidence
             </p>
             <h2
               style={{
                 fontSize: "clamp(2rem, 4vw, 3.5rem)",
                 fontWeight: 700,
-                color: "#fff",
+                color: isDark ? "#fff" : "var(--c-text-1)",
                 letterSpacing: "-0.01em",
               }}
             >
@@ -313,7 +316,7 @@ export default function ProjectsPage() {
           <ScrollReveal delay={0.1}>
             <p
               className="mt-5 mx-auto max-w-lg text-sm leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+              style={{ color: isDark ? "rgba(255,255,255,0.55)" : "var(--c-text-2)" }}
             >
               Our investment advisors are ready to guide you through available units,
               pricing, and exclusive pre-launch opportunities.

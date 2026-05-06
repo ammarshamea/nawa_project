@@ -14,11 +14,13 @@ export default function Navbar() {
   const [menuOpen,    setMenuOpen]    = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const pathname = usePathname();
-  const { lang, setLang, theme, setTheme, isAr, isDark } = useSite();
+  const { lang, setLang, setTheme, isAr, isDark } = useSite();
+
+  /* Nav over home hero stays light-on-photo in site light theme */
+  const atopHomeHero = pathname === "/" && !scrolled;
 
   const navLinks = [
     { href: "/",         label: tx(t.nav.home,     lang) },
-    { href: "/projects", label: tx(t.nav.projects, lang) },
     { href: "/about",    label: tx(t.nav.about,    lang) },
     { href: "/contact",  label: tx(t.nav.contact,  lang) },
   ];
@@ -86,7 +88,15 @@ export default function Navbar() {
                         letterSpacing: isAr ? "0.02em" : "0.28em",
                         fontWeight: 600,
                         textTransform: "uppercase",
-                        color: isActive ? "var(--c-gold-light)" : (isHovered ? "var(--c-text-1)" : "var(--c-text-2)"),
+                        color: isActive
+                          ? "var(--c-gold-light)"
+                          : isHovered
+                            ? atopHomeHero
+                              ? "#ffffff"
+                              : "var(--c-text-1)"
+                            : atopHomeHero
+                              ? "rgba(255,255,255,0.88)"
+                              : "var(--c-text-2)",
                         transition: "color 0.3s",
                       }}>
                         {link.label}
@@ -120,8 +130,10 @@ export default function Navbar() {
                 {/* Language toggle */}
                 <div
                   style={{
-                    display: "flex", alignItems: "center",
-                    border: "1px solid var(--c-border)", overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    border: `1px solid ${atopHomeHero ? "rgba(255,255,255,0.35)" : "var(--c-border)"}`,
+                    overflow: "hidden",
                   }}
                   className="hidden lg:flex"
                 >
@@ -137,7 +149,8 @@ export default function Navbar() {
                         textTransform: "uppercase",
                         fontFamily: l === "ar" ? "var(--font-tajawal)" : "var(--font-josefin)",
                         background: lang === l ? "rgba(181,133,22,0.85)" : "transparent",
-                        color: lang === l ? "#000" : "var(--c-text-2)",
+                        color:
+                          lang === l ? "#000" : atopHomeHero ? "rgba(255,255,255,0.88)" : "var(--c-text-2)",
                         border: "none",
                         cursor: "pointer",
                         transition: "all 0.25s",
@@ -155,17 +168,22 @@ export default function Navbar() {
                   style={{
                     width: "2rem", height: "2rem",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    border: "1px solid var(--c-border)",
+                    border: `1px solid ${atopHomeHero ? "rgba(255,255,255,0.35)" : "var(--c-border)"}`,
                     background: "transparent",
-                    color: "var(--c-text-2)",
+                    color: atopHomeHero ? "rgba(255,255,255,0.88)" : "var(--c-text-2)",
                     cursor: "pointer",
                     transition: "all 0.3s",
                   }}
                   aria-label="Toggle theme"
                 >
                   {isDark
-                    ? <Sun size={13} style={{ color: "#ebbf5b" }} />
-                    : <Moon size={13} style={{ color: "#b58516" }} />
+                    ? <Sun size={13} style={{ color: atopHomeHero ? "#ffffff" : "#ebbf5b" }} />
+                    : (
+                      <Moon
+                        size={13}
+                        style={{ color: atopHomeHero ? "rgba(255,255,255,0.95)" : "#b58516" }}
+                      />
+                    )
                   }
                 </button>
 
@@ -182,7 +200,13 @@ export default function Navbar() {
                 <button
                   onClick={() => setMenuOpen(true)}
                   className="lg:hidden"
-                  style={{ padding: "0.5rem", background: "none", border: "none", cursor: "pointer", color: "var(--c-text-2)" }}
+                  style={{
+                    padding: "0.5rem",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: atopHomeHero ? "rgba(255,255,255,0.92)" : "var(--c-text-2)",
+                  }}
                 >
                   <Menu size={22} />
                 </button>

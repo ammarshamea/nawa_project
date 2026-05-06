@@ -19,6 +19,7 @@ export default function Statistics() {
       className="section-padding relative overflow-hidden"
       style={{ background: "#0a0a0a" }}
     >
+      {/* AmmarLord comment it return soon */}
       {/* Background decoration */}
       <div
         className="absolute inset-0 pointer-events-none"

@@ -7,6 +7,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { SectionLabel } from "@/components/ui/GoldDivider";
 import { useSite } from "@/lib/context";
 import { t, tx } from "@/lib/i18n";
+import { publicPath } from "@/lib/publicPath";
 
 const valueIcons = [Gem, Eye, Target, Leaf, Users];
 
@@ -18,7 +19,7 @@ export default function AboutPage() {
       <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/rise-tower-riyadh-3.jpg"
+            src={publicPath("rise-tower-riyadh-3.jpg")}
             alt="Modern towers and real estate in Saudi Arabia"
             className="w-full h-full object-cover"
           />

@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { useSite } from "@/lib/context";
 import { t, tx } from "@/lib/i18n";
 import NawaLogo from "@/components/ui/NawaLogo";
+import { publicPath } from "@/lib/publicPath";
 
 function LineReveal({
   children,
@@ -79,7 +80,7 @@ export default function Hero() {
         className="scale-110 origin-center"
       >
         <motion.img
-          src="/Kingdom-Centre-Riyadh-Saudi-Arabia.webp"
+          src={publicPath("Kingdom-Centre-Riyadh-Saudi-Arabia.webp")}
           alt="Kingdom Centre tower, Riyadh, Saudi Arabia"
           initial={{ scale: 1.18, opacity: 0 }}
           animate={{ scale: 1.08, opacity: 1 }}

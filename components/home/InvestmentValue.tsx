@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { SectionLabel } from "@/components/ui/GoldDivider";
 import { useSite } from "@/lib/context";
 import { t, tx } from "@/lib/i18n";
+import { publicPath } from "@/lib/publicPath";
 
 const icons = [Gem, TrendingUp, ShieldCheck, Globe];
 
@@ -19,7 +20,7 @@ export default function InvestmentValue() {
             <div className="relative">
               <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
                 <img
-                  src="/maxresdefault.jpg"
+                  src={publicPath("maxresdefault.jpg")}
                   alt="Saudi real estate and commercial development"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />

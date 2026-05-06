@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { GoldDivider } from "@/components/ui/GoldDivider";
 import { useSite } from "@/lib/context";
 import { t, tx } from "@/lib/i18n";
+import { publicPath } from "@/lib/publicPath";
 
 export default function Vision2030() {
   const { lang, isDark } = useSite();
@@ -22,7 +23,7 @@ export default function Vision2030() {
     >
       <div className="absolute inset-0">
         <img
-          src="/Kingdom-Centre-Riyadh-Saudi-Arabia.webp"
+          src={publicPath("Kingdom-Centre-Riyadh-Saudi-Arabia.webp")}
           alt="Riyadh skyline, Saudi Arabia"
           className="w-full h-full object-cover"
           style={{ opacity: isDark ? 0.1 : 0.22 }}

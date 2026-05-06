@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteProvider } from "@/lib/context";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { publicPath } from "@/lib/publicPath";
 
 const josefinSans = Josefin_Sans({
   variable: "--font-josefin",
@@ -20,14 +21,7 @@ function siteOrigin(): string {
   return "http://localhost:3000";
 }
 
-const basePathTrim = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
-/** Public URL segment for `/public` assets when using Next `basePath` */
-function publicAsset(path: string): string {
-  const p = path.startsWith("/") ? path : `/${path}`;
-  return basePathTrim ? `${basePathTrim}${p}` : p;
-}
-
-const logoOgPath = publicAsset("nawa_logo.svg");
+const logoOgPath = publicPath("nawa_logo.svg");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin()),
